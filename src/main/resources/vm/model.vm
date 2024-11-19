@@ -18,6 +18,7 @@ import lombok.Setter;
  * @className ${model}
  * @package ${basePackage}.model.po
  */
+
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = false)

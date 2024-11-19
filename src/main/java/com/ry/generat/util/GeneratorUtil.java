@@ -22,7 +22,7 @@ public class GeneratorUtil {
      * 生成代码
      */
     public static void generatPackage(boolean mapperInterface, boolean model, boolean service, boolean controller,
-        boolean xml, boolean queryDto) {
+        boolean xml, boolean queryDto,boolean editDto,boolean modelVo) {
 
         VelocityEngine engine = new VelocityEngine();
         engine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
@@ -81,13 +81,21 @@ public class GeneratorUtil {
             createPath(xmlPath, className + "Mapper.xml");
             generator(engine, ctx, "vm/xml.vm", xmlPath, className + "Mapper.xml");
         }
-
+        if (editDto) {
+            String editDtoPath = moduleApiPath + srcMainJavaPath + moduleBasePackagePath + "/model/dto/";
+            createPath(editDtoPath, className + "EditDTO.java");
+            generator(engine, ctx, "vm/editDTO.vm", editDtoPath, className + "EditDTO.java");
+        }
         if (queryDto) {
             String queryDtoPath = moduleApiPath + srcMainJavaPath + moduleBasePackagePath + "/model/dto/";
             createPath(queryDtoPath, className + "QueryDTO.java");
             generator(engine, ctx, "vm/queryDTO.vm", queryDtoPath, className + "QueryDTO.java");
         }
-
+        if (modelVo) {
+            String modelVoPath = moduleApiPath + srcMainJavaPath + moduleBasePackagePath + "/model/vo/";
+            createPath(modelVoPath, className + "VO.java");
+            generator(engine, ctx, "vm/modelVO.vm", modelVoPath, className + "VO.java");
+        }
         if (model) {
             String modelPath = moduleProviderPath + srcMainJavaPath + moduleBasePackagePath + "/model/po/";
             createPath(modelPath, className + ".java");

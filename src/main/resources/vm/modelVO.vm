@@ -1,6 +1,6 @@
-package ${basePackage}.model.dto;
+package ${basePackage}.model.vo;
 
-import com.central.common.model.BasePageDTO;
+import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,14 +8,14 @@ import lombok.Setter;
 /**
 * @author ${author}
 * @createTime ${datetime}
-* @className ${model}QueryDTO
-* @package ${basePackage}.model.dto
+* @className ${model}VO
+* @package ${basePackage}.model.vo
 */
 
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = false)
-public class ${model}QueryDTO extends BasePageDTO {
+public class ${model}VO implements Serializable  {
 
     private static final long serialVersionUID = 1L;
     // TODO 查询参数

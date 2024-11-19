@@ -1,0 +1,26 @@
+package ${basePackage}.model.dto;
+
+import java.io.Serializable;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author ${author}
+ * @createTime ${datetime}
+ * @className ${model}EditDTO
+ * @package ${basePackage}.model.dto
+ */
+
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false)
+public class ${model}EditDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+
+    // TODO 编辑参数
+
+}
