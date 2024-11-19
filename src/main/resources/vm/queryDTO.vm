@@ -1,0 +1,20 @@
+package ${basePackage}.model.dto;
+
+import com.central.common.model.BasePageDTO;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author ${author}
+ * @createTime ${datetime}
+ */
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false)
+public class ${model}QueryDTO extends BasePageDTO {
+
+    private static final long serialVersionUID = 1L;
+    // TODO 查询参数
+
+}

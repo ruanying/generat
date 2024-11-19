@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${basePackage}.mapper.${model}Mapper">
+  <resultMap type="${basePackage}.model.po.${model}" id="${model_}Map">
+      #foreach($tableColumn in $tableColumns)
+        <result property="${tableColumn.property}" column="${tableColumn.column}"/>
+      #end
+  </resultMap>
+
+  <sql id="base_Column_List">
+      #foreach($tableColumn in $tableColumns)
+          #if($foreach.first)        #end`$tableColumn.column`#if($foreach.hasNext),#end
+      #end
+
+  </sql>
+
+  <select id="selectListPage" resultType="${basePackage}.model.po.${model}">
+    select * from ${tableName} t
+    <trim prefix="where" suffixOverrides="and|or">
+        #foreach($tableColumn in $tableColumns)
+          <if test="${tableColumn.property} != null">
+            `$tableColumn.column` = #{$tableColumn.property} and
+          </if>
+        #end
+    </trim>
+  </select>
+</mapper>

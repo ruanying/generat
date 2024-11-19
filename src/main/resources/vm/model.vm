@@ -1,0 +1,40 @@
+package ${basePackage}.model.po;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.central.common.model.SuperEntity;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * ${tableComment}
+ *
+ * @author ${author}
+ * @createTime ${datetime}
+ * @className ${model}
+ * @package ${basePackage}.model.po
+ */
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false)
+@TableName("${tableName}")
+public class ${model} extends SuperEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    #foreach($tableColumn in $tableColumns)
+    #if(${tableColumn.column} != 'id' && ${tableColumn.column} != 'create_time' && ${tableColumn.column} != 'update_time')
+    #set($text = ${tableColumn.column})
+    #if($text.endsWith("_id"))
+    @JsonSerialize(using = ToStringSerializer.class)
+    #end
+    @ApiModelProperty(value = "${tableColumn.comment}")
+    private $types.get(${tableColumn.jdbcType}) ${tableColumn.property};
+
+    #end
+    #end
+}

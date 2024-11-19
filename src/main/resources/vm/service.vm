@@ -1,0 +1,26 @@
+package ${basePackage}.service;
+
+import com.central.common.model.PageResult;
+import com.central.common.service.ISuperService;
+import ${basePackage}.model.dto.${model}QueryDTO;
+import ${basePackage}.model.po.${model};
+
+/**
+ * ${tableComment}
+ *
+ * @author ${author}
+ * @createTime ${datetime}
+ * @className I${model}Service
+ * @package ${basePackage}.service
+ */
+public interface I${model}Service extends ISuperService<${model}> {
+
+    /**
+     * 分页查询
+     *
+     * @param dto
+     * @return
+    */
+    PageResult<${model}> get${model}sByPage(${model}QueryDTO dto);
+
+}

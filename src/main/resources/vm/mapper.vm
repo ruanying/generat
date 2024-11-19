@@ -1,0 +1,18 @@
+package ${basePackage}.mapper;
+
+import com.central.db.mapper.SuperMapper;
+import ${basePackage}.model.po.${model};
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * ${tableComment}
+ *
+ * @author ${author}
+ * @createTime ${datetime}
+ * @className ${model}Mapper
+ * @package ${basePackage}.mapper
+ */
+@Mapper
+public interface ${model}Mapper extends SuperMapper<${model}> {
+
+}

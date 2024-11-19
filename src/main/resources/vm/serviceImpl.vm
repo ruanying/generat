@@ -1,0 +1,37 @@
+package ${basePackage}.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.central.common.model.PageResult;
+import com.central.common.service.impl.SuperServiceImpl;
+import ${basePackage}.mapper.${model}Mapper;
+import ${basePackage}.model.dto.${model}QueryDTO;
+import ${basePackage}.model.po.${model};
+import ${basePackage}.service.I${model}Service;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${tableComment}
+ *
+ * @author ${author}
+ * @createTime ${datetime}
+ * @className I${model}ServiceImpl
+ * @package ${basePackage}.service.impl
+ */
+@Slf4j
+@Service
+public class ${model}ServiceImpl extends SuperServiceImpl<${model}Mapper, ${model}> implements
+    I${model}Service {
+
+    @Override
+    public PageResult<${model}> get${model}sByPage(${model}QueryDTO dto) {
+        Page<${model}> page = new Page<>(dto.getPage(), dto.getLimit());
+        LambdaQueryWrapper<${model}> wrapper = Wrappers.lambdaQuery();
+        // TODO 查询条件
+        page(page, wrapper);
+        return PageResult.<${model}>builder().data(page.getRecords()).code(0).count(page.getTotal()).build();
+    }
+
+}
